@@ -2,7 +2,7 @@
 import React from "react";
 import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import HerbalProducts from "../assets/HerbalProducts.png";
-import herbalimage from '../assets/herbalimage.png'
+import herbalimage from '../assets/Herbalimage.png'
 
 const HerbalProductsSection = () => {
     const features = [

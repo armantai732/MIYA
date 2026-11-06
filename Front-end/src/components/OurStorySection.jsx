@@ -24,16 +24,16 @@ const OurStorySection = () => {
               <div className="w-full h-full rounded-3xl border-2 border-[#d4af37]/60 p-1.5 shadow-xl bg-[#fcf8ed] relative">
                 <div className="w-full h-full rounded-2xl overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop"
+                    src="https://images.openai.com/static-rsc-4/mWTREwBJY13889xiZVx9M8Ha4mJwcZ-u0Fb5yv1XneuJuF-TbAMo_Qth29S8E2GFiGYOQe2w2b5Nppc2boeOO-nwN-xlXZO9_Mh0mH-19Q-IRW7ids4E6o-n2NrjgZxR7iPh-Hy7Z4mOhAbdsO69FEFLgh44YNTJqg0dvFUAKqygA5v-Tco25L8gRCfBT12D?purpose=fullsize"
                     alt="Sheikh Zayed Mosque"
                     className="w-full h-full object-cover object-center"
                   />
                 </div>
                 {/* Gold Frame Corner Accents */}
-                <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-[#d4af37] rounded-tl-xl pointer-events-none"></div>
+                {/* <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-[#d4af37] rounded-tl-xl pointer-events-none"></div>
                 <div className="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-[#d4af37] rounded-tr-xl pointer-events-none"></div>
                 <div className="absolute -bottom-1 -left-1 w-6 h-6 border-b-2 border-l-2 border-[#d4af37] rounded-bl-xl pointer-events-none"></div>
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-[#d4af37] rounded-br-xl pointer-events-none"></div>
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-[#d4af37] rounded-br-xl pointer-events-none"></div> */}
               </div>
             </div>
           </div>

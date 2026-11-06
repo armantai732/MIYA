@@ -1,21 +1,27 @@
 import React from "react";
 import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
-import hero from '../assets/hero.png'
+import background from '../assets/backgroundvideo2.mp4'
 
 const HeroSection = () => {
   return (
     <section className="w-full bg-[#061d14]">
       <div className="relative mx-auto w-full max-w-[1800px] overflow-hidden">
 
-        {/* Full Background Image with Islamic Frame */}
-        <img
-          src={hero}
-          alt="Beautiful Islamic Mosque"
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
           className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+        >
+          <source src={background} type="video/mp4" />
+          Your browser does not support video.
+        </video>
 
-        {/* Mobile readability overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#002619]/95 via-[#002619]/65 to-transparent lg:from-transparent" />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#002619]/90 via-[#002619]/60 to-[#002619]/20" />
 
         {/* Content */}
         <div className="relative z-10 flex min-h-[430px] items-center px-6 py-12 sm:min-h-[480px] sm:px-12 lg:min-h-[min(45vw,650px)] lg:px-20">

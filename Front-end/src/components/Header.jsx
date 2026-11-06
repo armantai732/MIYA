@@ -17,14 +17,14 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Spiritual Knowledge", path: "/knowledge" },
-  { name: "Courses", path: "/courses" },
-  { name: "Herbal Products", path: "/products" },
+  // { name: "Courses", path: "/courses" },
+  // { name: "Herbal Products", path: "/products" },
   { name: "Services", path: "/services" },
   { name: "Appointment", path: "/appointment" },
-  { name: "Blog & Updates", path: "/blogs" },
+  // { name: "Blog & Updates", path: "/blogs" },
   { name: "Donate", path: "/donate" },
   { name: "Contact", path: "/contact" },
-  { name: "Mureed Card", path: "/mureed-card" },
+  // { name: "Mureed Card", path: "/mureed-card" },
 ];
 
 const Header = () => {

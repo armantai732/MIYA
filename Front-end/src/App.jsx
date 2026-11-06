@@ -80,17 +80,17 @@ const Home = () => {
         <AboutSection />
       </div>
 
-      <div id="courses" className="scroll-mt-24">
+      {/* <div id="courses" className="scroll-mt-24">
         <SpiritualCoursesSection />
-      </div>
+      </div> */}
 
       <div id="services" className="scroll-mt-24">
         <ServicesSection />
       </div>
 
-      <div id="products" className="scroll-mt-24">
+      {/* <div id="products" className="scroll-mt-24">
         <HerbalProductsSection />
-      </div>
+      </div> */}
 
       <div id="blogs" className="scroll-mt-24">
         <LatestArticlesSection />

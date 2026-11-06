@@ -83,8 +83,8 @@ const Footer = () => {
             <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80 font-light">
               <li><a href="#home" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Home</span></a></li>
               <li><a href="#about" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› About Us</span></a></li>
-              <li><a href="#courses" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Spiritual Courses</span></a></li>
-              <li><a href="#products" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Herbal Products</span></a></li>
+              {/* <li><a href="#courses" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Spiritual Courses</span></a></li>
+              <li><a href="#products" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Herbal Products</span></a></li> */}
               <li><a href="#services" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Services</span></a></li>
             </ul>
           </div>
@@ -96,10 +96,10 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80 font-light">
               <li><a href="#book" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Book an Appointment</span></a></li>
-              <li><a href="#blog" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Blog &amp; Updates</span></a></li>
+              {/* <li><a href="#blog" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Blog &amp; Updates</span></a></li> */}
               <li><a href="#donate" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Donate</span></a></li>
-              <li><a href="#card" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Mureed Card</span></a></li>
-              <li><a href="#contact" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Contact Us</span></a></li>
+              {/* <li><a href="#card" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Mureed Card</span></a></li> */}
+              {/* <li><a href="#contact" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Contact Us</span></a></li> */}
             </ul>
           </div>
 
@@ -109,10 +109,10 @@ const Footer = () => {
               Contact Us
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-100/80 font-light mb-2">
-              <li className="flex items-center space-x-2.5">
+              {/* <li className="flex items-center space-x-2.5">
                 <FaPhoneAlt className="text-amber-300 shrink-0 text-xs" />
                 <span>+91 98765 43210</span>
-              </li>
+              </li> */}
               <li className="flex items-center space-x-2.5">
                 <FaEnvelope className="text-amber-300 shrink-0 text-xs" />
                 <span>info@yourname.com</span>

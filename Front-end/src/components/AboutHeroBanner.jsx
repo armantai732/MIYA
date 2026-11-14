@@ -6,7 +6,7 @@ import aboutBack from '../assets/aboutus.png';
 
 const AboutHeroBanner = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-[#031e13] font-sans">
+    <section className="relative w-full overflow-hidden mt-12 bg-[#031e13] font-sans">
 
       {/* Full Width About Banner */}
       <div

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import {
@@ -17,14 +18,10 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Spiritual Knowledge", path: "/knowledge" },
-  // { name: "Courses", path: "/courses" },
-  // { name: "Herbal Products", path: "/products" },
   { name: "Services", path: "/services" },
   { name: "Appointment", path: "/appointment" },
-  // { name: "Blog & Updates", path: "/blogs" },
   { name: "Donate", path: "/donate" },
   { name: "Contact", path: "/contact" },
-  // { name: "Mureed Card", path: "/mureed-card" },
 ];
 
 const Header = () => {
@@ -39,18 +36,19 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Page Top
+      // MENU OPEN: NEVER HIDE NAVBAR
+      if (isMenuOpen) {
+        setShowNavbar(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
       if (currentScrollY <= 100) {
         setShowNavbar(true);
-      }
-      // Scroll Up
-      else if (currentScrollY < lastScrollY.current) {
+      } else if (currentScrollY < lastScrollY.current) {
         setShowNavbar(true);
-      }
-      // Scroll Down
-      else if (currentScrollY > lastScrollY.current) {
+      } else if (currentScrollY > lastScrollY.current) {
         setShowNavbar(false);
-        setIsMenuOpen(false);
       }
 
       lastScrollY.current = currentScrollY;
@@ -63,11 +61,26 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, [isMenuOpen]);
+
+  // CLOSE MENU WITH ESCAPE KEY
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
   }, []);
 
   const handleBookNow = () => {
     setIsMenuOpen(false);
-    navigate("/#appointment");
+    navigate("/appointment");
   };
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -89,51 +102,36 @@ const Header = () => {
 
           {/* SOCIAL LINKS */}
           <div className="hidden shrink-0 items-center gap-4 text-sm sm:flex">
-            <a
-              href="#youtube"
-              aria-label="YouTube"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]"
-            >
+            <a href="#youtube" aria-label="YouTube"
+              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
               <FaYoutube />
             </a>
 
-            <a
-              href="#facebook"
-              aria-label="Facebook"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]"
-            >
+            <a href="#facebook" aria-label="Facebook"
+              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
               <FaFacebookF />
             </a>
 
-            <a
-              href="#instagram"
-              aria-label="Instagram"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]"
-            >
+            <a href="#instagram" aria-label="Instagram"
+              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
               <FaInstagram />
             </a>
 
-            <a
-              href="#whatsapp"
-              aria-label="WhatsApp"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]"
-            >
+            <a href="#whatsapp" aria-label="WhatsApp"
+              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
               <FaWhatsapp />
             </a>
           </div>
         </div>
       </div>
 
-      {/* MAIN NAVBAR - SCROLL UP SHOW / SCROLL DOWN HIDE */}
+      {/* MAIN NAVBAR */}
       <div
         className={`fixed left-0 top-0 z-50 w-full transition-transform duration-300 ease-in-out ${
           showNavbar
             ? "translate-y-0"
             : "-translate-y-full"
         }`}
-        style={{
-          top: "0px",
-        }}
       >
         <nav className="border-b border-[#d4af37]/35 bg-[#fcf8ed] shadow-[0_5px_20px_rgba(3,30,19,0.06)]">
 
@@ -163,7 +161,6 @@ const Header = () => {
 
             {/* DESKTOP NAVIGATION */}
             <div className="hidden xl:flex xl:items-center xl:gap-3 2xl:gap-5">
-
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
@@ -192,7 +189,6 @@ const Header = () => {
                   )}
                 </NavLink>
               ))}
-
             </div>
 
             {/* DESKTOP BOOK BUTTON */}
@@ -208,7 +204,7 @@ const Header = () => {
             {/* MOBILE MENU BUTTON */}
             <button
               type="button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#031e13] text-xl text-[#ebd082] shadow-sm transition-all hover:bg-[#0d3b28] xl:hidden"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
@@ -222,11 +218,12 @@ const Header = () => {
           <div
             className={`overflow-hidden border-t border-[#d4af37]/25 bg-[#fcf8ed] transition-all duration-300 xl:hidden ${
               isMenuOpen
-                ? "max-h-[85vh] opacity-100"
+                ? "max-h-[85dvh] opacity-100"
                 : "max-h-0 border-transparent opacity-0"
             }`}
+            aria-hidden={!isMenuOpen}
           >
-            <div className="max-h-[85vh] space-y-1 overflow-y-auto px-4 py-4 sm:px-6">
+            <div className="max-h-[85dvh] space-y-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6">
 
               {/* MOBILE MENU HEADING */}
               <div className="mb-3 flex items-center gap-2 border-b border-[#d4af37]/30 pb-3">
@@ -242,7 +239,7 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   end={link.path === "/"}
-                  onClick={closeMenu}
+                  // Menu will NOT close when a link is clicked
                   className={({ isActive }) =>
                     `flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ${
                       isActive

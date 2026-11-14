@@ -71,12 +71,7 @@ const SpiritualKnowledgeHero = () => {
 
         </div>
 
-        {/* Decorative Golden Corners */}
-        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#d4af37]/60 pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#d4af37]/60 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#d4af37]/60 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#d4af37]/60 pointer-events-none"></div>
-
+        
       </div>
 
       {/* Bottom Breadcrumb */}

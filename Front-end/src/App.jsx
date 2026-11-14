@@ -40,6 +40,23 @@ import HerbalProductsHero from "./components/HerbalProductsHero.jsx";
 import HerbalProductsListingPage from "./components/HerbalProductsListingPage.jsx";
 import HerbalTrustBanner from "./components/HerbalTrustBanner.jsx";
 import WhyChooseHerbalWithFAQ from "./components/WhyChooseHerbalWithFAQ.jsx";
+import SpiritualServicesHero from "./components/SpiritualServicesHero.jsx";
+import SpiritualServicesGrid from "./components/SpiritualServicesGrid.jsx";
+import HowItWorksAndFAQ from "./components/HowItWorksAndFAQ.jsx";
+import BookAppointmentBanner from "./components/BookAppointmentBanner.jsx";
+import AppointmentBookingSection from "./components/AppointmentBookingSection.jsx";
+import SimpleAppointmentSteps from "./components/SimpleAppointmentSteps.jsx";
+import AppointmentFAQSection from "./components/AppointmentFAQSection.jsx";
+import DonateHeroBanner from "./components/DonateHeroBanner.jsx";
+import DonatePurposeSection from "./components/DonatePurposeSection.jsx";
+import DonationFormSection from "./components/DonationFormSection.jsx";
+import DonateImpactSection from "./components/DonateImpactSection.jsx";
+import DonateGratitudeBanner from "./components/DonateGratitudeBanner.jsx";
+import DonateFAQSection from "./components/DonateFAQSection.jsx";
+import ContactHeroBanner from "./components/ContactHeroBanner.jsx";
+import ContactFormSection from "./components/ContactFormSection.jsx";
+import ContactFAQSection from "./components/ContactFAQSection.jsx";
+import AppointmentPaymentHeaderBanner from "./components/AppointmentPaymentHeaderBanner.jsx";
 
 // SCROLL TO TOP / HASH SECTION
 const ScrollToSection = () => {
@@ -96,7 +113,7 @@ const Home = () => {
         <LatestArticlesSection />
       </div>
 
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       <div id="appointment" className="scroll-mt-24">
         <AppointmentBanner />
@@ -156,6 +173,62 @@ const Products = () => {
   );
 };
 
+const Services = () => {
+  return (
+    <main>
+      <SpiritualServicesHero />
+      <SpiritualServicesGrid />
+      <HowItWorksAndFAQ />
+    </main>
+  )
+}
+
+const Appointment = () => {
+  return (
+    <main>
+      <BookAppointmentBanner />
+      <AppointmentBookingSection />
+      <SimpleAppointmentSteps />
+      <AppointmentFAQSection />
+    </main>
+  )
+}
+
+
+const Donate = () => {
+  return (
+    <main>
+      <DonateHeroBanner />
+      <DonatePurposeSection />
+      <DonationFormSection />
+      <DonateImpactSection />
+      <DonateGratitudeBanner />
+      <DonateFAQSection />
+    </main>
+  )
+}
+
+
+const Contact = () => {
+  return (
+    <main>
+      <ContactHeroBanner />
+      <ContactFormSection />
+      <ContactFAQSection />
+    </main>
+  )
+}
+
+const Payment = () => {
+  return (
+    <main>
+      <AppointmentPaymentHeaderBanner />
+      <ContactFormSection />
+      <ContactFAQSection />
+    </main>
+  )
+}
+
 // MAIN APP
 function App() {
   return (
@@ -171,6 +244,11 @@ function App() {
           <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
 

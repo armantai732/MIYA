@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import {
@@ -12,24 +11,28 @@ import {
   FaMosque,
   FaChevronRight,
   FaArrowRight,
+  FaGlobe,
 } from "react-icons/fa";
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Spiritual Knowledge", path: "/knowledge" },
-  { name: "Services", path: "/services" },
-  { name: "Appointment", path: "/appointment" },
-  { name: "Donate", path: "/donate" },
-  { name: "Contact", path: "/contact" },
-];
+import { useLanguage } from "../context/LanguageContext"; // Import context
 
 const Header = () => {
+  const { lang, toggleLanguage, t } = useLanguage(); // Get global language state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
 
   const navigate = useNavigate();
   const lastScrollY = useRef(0);
+
+  // Nav links mapping using translated text
+  const navLinks = [
+    { name: t.nav.home, path: "/" },
+    { name: t.nav.about, path: "/about" },
+    { name: t.nav.knowledge, path: "/knowledge" },
+    { name: t.nav.services, path: "/services" },
+    { name: t.nav.appointment, path: "/appointment" },
+    { name: t.nav.donate, path: "/donate" },
+    { name: t.nav.contact, path: "/contact" },
+  ];
 
   // SCROLL DIRECTION BASED NAVBAR
   useEffect(() => {
@@ -96,29 +99,29 @@ const Header = () => {
             <FaMosque className="shrink-0 text-sm text-[#ebd082]" />
 
             <p className="truncate text-[10px] font-medium tracking-wide text-emerald-50/90 sm:text-xs">
-              May Allah fill our lives with peace, guidance and barakah. Ameen!
+              {t.welcomeBanner}
             </p>
           </div>
 
-          {/* SOCIAL LINKS */}
+          {/* SOCIAL LINKS (Top bar me wapas shift kar diye gaye hain) */}
           <div className="hidden shrink-0 items-center gap-4 text-sm sm:flex">
             <a href="#youtube" aria-label="YouTube"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
+              className="text-emerald-100/85 transition-colors hover:text-[#ebd082]">
               <FaYoutube />
             </a>
 
             <a href="#facebook" aria-label="Facebook"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
+              className="text-emerald-100/85 transition-colors hover:text-[#ebd082]">
               <FaFacebookF />
             </a>
 
             <a href="#instagram" aria-label="Instagram"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
+              className="text-emerald-100/85 transition-colors hover:text-[#ebd082]">
               <FaInstagram />
             </a>
 
             <a href="#whatsapp" aria-label="WhatsApp"
-              className="text-emerald-100/80 transition-colors hover:text-[#ebd082]">
+              className="text-emerald-100/85 transition-colors hover:text-[#ebd082]">
               <FaWhatsapp />
             </a>
           </div>
@@ -159,7 +162,7 @@ const Header = () => {
               </div>
             </Link>
 
-            {/* DESKTOP NAVIGATION */}
+            {/* DESKTOP NAVIGATION (Original Underline Hover Animation) */}
             <div className="hidden xl:flex xl:items-center xl:gap-3 2xl:gap-5">
               {navLinks.map((link) => (
                 <NavLink
@@ -191,26 +194,50 @@ const Header = () => {
               ))}
             </div>
 
-            {/* DESKTOP BOOK BUTTON */}
-            <button
-              onClick={handleBookNow}
-              className="hidden shrink-0 items-center gap-2 rounded-full border border-[#d4af37] bg-gradient-to-r from-[#ebd082] to-[#d4af37] px-4 py-3 text-xs font-bold text-[#352609] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg 2xl:flex"
-            >
-              <FaCalendarAlt />
-              Book Now
-              <FaChevronRight className="text-[9px]" />
-            </button>
+            {/* RIGHT ACTIONS: LANGUAGE SWITCHER + DESKTOP BOOK BUTTON */}
+            <div className="hidden xl:flex items-center gap-3 shrink-0">
+              
+              {/* Language Switcher Button (Book Now ke bilkul bagal mein) */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-1.5 bg-[#031e13] hover:bg-[#0d3b28] text-[#ebd082] border border-[#d4af37]/50 px-3.5 py-3 rounded-full text-xs font-bold shadow-sm transition-all duration-300"
+              >
+                <FaGlobe />
+                <span>{lang === 'en' ? 'हिन्दी (Hindi)' : 'English'}</span>
+              </button>
 
-            {/* MOBILE MENU BUTTON */}
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#031e13] text-xl text-[#ebd082] shadow-sm transition-all hover:bg-[#0d3b28] xl:hidden"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <FaTimes /> : <FaBars />}
-            </button>
+              {/* Book Now Button */}
+              <button
+                onClick={handleBookNow}
+                className="flex items-center gap-2 rounded-full border border-[#d4af37] bg-gradient-to-r from-[#ebd082] to-[#d4af37] px-4 py-3 text-xs font-bold text-[#352609] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg 2xl:text-xs"
+              >
+                <FaCalendarAlt />
+                {t.bookNow}
+                <FaChevronRight className="text-[9px]" />
+              </button>
+            </div>
+
+            {/* MOBILE MENU BUTTON & MOBILE LANG BUTTON */}
+            <div className="flex items-center gap-2 xl:hidden">
+              {/* Mobile Language Button */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-1 bg-[#031e13] text-[#ebd082] border border-[#d4af37]/50 px-3 py-2.5 rounded-xl text-xs font-bold shadow-sm"
+              >
+                <FaGlobe />
+                <span>{lang === 'en' ? 'हिन्दी' : 'English'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#031e13] text-xl text-[#ebd082] shadow-sm transition-all hover:bg-[#0d3b28]"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <FaTimes /> : <FaBars />}
+              </button>
+            </div>
 
           </div>
 
@@ -230,7 +257,7 @@ const Header = () => {
                 <FaMosque className="text-lg text-[#a4771e]" />
 
                 <span className="font-serif text-sm font-bold text-[#0d3b28]">
-                  Explore Our Website
+                  {t.exploreWebsite || "Explore Our Website"}
                 </span>
               </div>
 
@@ -239,7 +266,7 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   end={link.path === "/"}
-                  // Menu will NOT close when a link is clicked
+                  onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
                     `flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ${
                       isActive
@@ -260,7 +287,7 @@ const Header = () => {
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ebd082] to-[#d4af37] py-3.5 text-sm font-bold text-[#352609] shadow-md transition-all hover:brightness-105"
               >
                 <FaCalendarAlt />
-                Book an Appointment
+                {t.bookAppointment}
                 <FaArrowRight />
               </button>
 

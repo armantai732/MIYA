@@ -1,31 +1,35 @@
 import React from 'react';
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
-
-const articlesData = [
-  {
-    id: 1,
-    title: 'The Importance of Quran in Our Daily Life',
-    date: 'Nov 2, 2025',
-    image: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=800&auto=format&fit=crop',
-    link: '#article-1',
-  },
-  {
-    id: 2,
-    title: 'How to Find Peace in a Busy Life',
-    date: 'Oct 28, 2025',
-    image: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop',
-    link: '#article-2',
-  },
-  {
-    id: 3,
-    title: 'Benefits of Herbal Remedies',
-    date: 'Oct 25, 2025',
-    image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=800&auto=format&fit=crop',
-    link: '#article-3',
-  },
-];
+import { useLanguage } from '../context/LanguageContext'; // Import global context
 
 const LatestArticlesSection = () => {
+  const { t } = useLanguage(); // Get global translations
+
+  // Articles data array connected to global translations
+  const articlesData = [
+    {
+      id: 1,
+      title: t.article1Title || 'The Importance of Quran in Our Daily Life',
+      date: t.article1Date || 'Nov 2, 2025',
+      image: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=800&auto=format&fit=crop',
+      link: '#article-1',
+    },
+    {
+      id: 2,
+      title: t.article2Title || 'How to Find Peace in a Busy Life',
+      date: t.article2Date || 'Oct 28, 2025',
+      image: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop',
+      link: '#article-2',
+    },
+    {
+      id: 3,
+      title: t.article3Title || 'Benefits of Herbal Remedies',
+      date: t.article3Date || 'Oct 25, 2025',
+      image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=800&auto=format&fit=crop',
+      link: '#article-3',
+    },
+  ];
+
   return (
     <section className="relative w-full bg-[#fcf8ed] py-16 px-4 sm:px-6 lg:px-12 font-sans overflow-hidden">
       
@@ -44,12 +48,12 @@ const LatestArticlesSection = () => {
           <div className="flex items-center justify-center space-x-3 mb-2">
             <span className="w-12 h-[1px] bg-amber-700/50"></span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-amber-950 tracking-wide">
-              Latest Articles &amp; Updates
+              {t.articlesHeading || "Latest Articles & Updates"}
             </h2>
             <span className="w-12 h-[1px] bg-amber-700/50"></span>
           </div>
           <p className="text-amber-900/70 text-sm sm:text-base font-light">
-            Stay informed with our latest articles and spiritual insights
+            {t.articlesSubheading || "Stay informed with our latest articles and spiritual insights"}
           </p>
         </div>
 
@@ -90,7 +94,7 @@ const LatestArticlesSection = () => {
                     href={article.link}
                     className="inline-flex items-center space-x-1.5 font-medium text-amber-800 hover:text-amber-950 transition-colors"
                   >
-                    <span>Read More</span>
+                    <span>{t.readMore || "Read More"}</span>
                     <FaArrowRight className="text-[10px]" />
                   </a>
                 </div>

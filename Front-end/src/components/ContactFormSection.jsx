@@ -88,7 +88,7 @@ const ContactFormSection = () => {
               </div>
 
               {/* Call Us */}
-              <div className="bg-[#f7f2e1]/90 backdrop-blur-sm border border-[#d4af37]/40 rounded-2xl p-4 flex items-center space-x-4 shadow-2xs transition-all hover:border-[#d4af37]">
+              {/* <div className="bg-[#f7f2e1]/90 backdrop-blur-sm border border-[#d4af37]/40 rounded-2xl p-4 flex items-center space-x-4 shadow-2xs transition-all hover:border-[#d4af37]">
                 <div className="w-10 h-10 rounded-full bg-[#09261b] text-[#ebd082] flex items-center justify-center shrink-0 shadow-xs">
                   <FaPhoneAlt className="text-xs" />
                 </div>
@@ -98,7 +98,7 @@ const ContactFormSection = () => {
                   </h4>
                   <p className="text-amber-950/75 text-xs">+91 98765 43210</p>
                 </div>
-              </div>
+              </div> */}
 
               {/* Email Us */}
               <div className="bg-[#f7f2e1]/90 backdrop-blur-sm border border-[#d4af37]/40 rounded-2xl p-4 flex items-center space-x-4 shadow-2xs transition-all hover:border-[#d4af37]">

@@ -6,15 +6,17 @@ import {
   FaWhatsapp, 
   FaTimes, 
   FaMosque, 
-  FaPhoneAlt, 
   FaEnvelope, 
   FaMapMarkerAlt, 
   FaHeart 
 } from 'react-icons/fa';
-import background from '../assets/background1.png'
-
+import background from '../assets/background1.png';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext'; // Import global context
 
 const Footer = () => {
+  const { t } = useLanguage(); // Get global translations
+
   return (
     <footer className="relative w-full bg-[#031e13] text-white pt-16 pb-8 px-4 sm:px-6 lg:px-12 font-sans overflow-hidden border-t border-[#d4af37]/30">
       
@@ -41,17 +43,17 @@ const Footer = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-serif font-bold text-amber-100 tracking-wide">
-                  YOUR NAME
+                  {t.footerBrandName || "YOUR NAME"}
                 </span>
                 <span className="text-[10px] text-amber-300/80 tracking-wider font-medium">
-                  Spiritual Guidance &amp; Hikmat
+                  {t.footerBrandSubtitle || "Spiritual Guidance & Hikmat"}
                 </span>
               </div>
             </div>
 
             {/* Tagline */}
             <p className="text-emerald-100/70 text-xs sm:text-sm font-light max-w-sm leading-relaxed">
-              Spreading peace, knowledge and healing for a better tomorrow.
+              {t.footerTagline || "Spreading peace, knowledge and healing for a better tomorrow."}
             </p>
 
             {/* Social Media Icons */}
@@ -78,41 +80,32 @@ const Footer = () => {
           {/* Column 2: Quick Links */}
           <div className="flex flex-col space-y-3">
             <h3 className="font-serif font-bold text-amber-100 text-base mb-2 tracking-wide">
-              Quick Links
+              {t.footerQuickLinksTitle || "Quick Links"}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80 font-light">
-              <li><a href="#home" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Home</span></a></li>
-              <li><a href="#about" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› About Us</span></a></li>
-              {/* <li><a href="#courses" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Spiritual Courses</span></a></li>
-              <li><a href="#products" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Herbal Products</span></a></li> */}
-              <li><a href="#services" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Services</span></a></li>
+              <li><Link to={"/"} className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› {t.nav?.home || "Home"}</span></Link></li>
+              <li><Link to={"/about"} className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› {t.nav?.about || "About Us"}</span></Link></li>
+              <li><Link to={"/services"} className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› {t.nav?.services || "Services"}</span></Link></li>
             </ul>
           </div>
 
           {/* Column 3: Useful Links */}
           <div className="flex flex-col space-y-3">
             <h3 className="font-serif font-bold text-amber-100 text-base mb-2 tracking-wide">
-              Useful Links
+              {t.footerUsefulLinksTitle || "Useful Links"}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80 font-light">
-              <li><a href="#book" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Book an Appointment</span></a></li>
-              {/* <li><a href="#blog" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Blog &amp; Updates</span></a></li> */}
-              <li><a href="#donate" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Donate</span></a></li>
-              {/* <li><a href="#card" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Mureed Card</span></a></li> */}
-              {/* <li><a href="#contact" className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› Contact Us</span></a></li> */}
+              <li><Link to={"/appointment"} className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› {t.footerAppointmentLink || "Book an Appointment"}</span></Link></li>
+              <li><Link to={"/donate"} className="hover:text-amber-300 transition-colors flex items-center space-x-2"><span>› {t.nav?.donate || "Donate"}</span></Link></li>
             </ul>
           </div>
 
           {/* Column 4: Contact Us & Newsletter */}
           <div className="flex flex-col space-y-3 lg:col-span-1">
             <h3 className="font-serif font-bold text-amber-100 text-base mb-2 tracking-wide">
-              Contact Us
+              {t.footerContactTitle || "Contact Us"}
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-100/80 font-light mb-2">
-              {/* <li className="flex items-center space-x-2.5">
-                <FaPhoneAlt className="text-amber-300 shrink-0 text-xs" />
-                <span>+91 98765 43210</span>
-              </li> */}
               <li className="flex items-center space-x-2.5">
                 <FaEnvelope className="text-amber-300 shrink-0 text-xs" />
                 <span>info@yourname.com</span>
@@ -125,18 +118,18 @@ const Footer = () => {
 
             {/* Newsletter Subscription */}
             <div className="pt-2">
-              <p className="text-xs font-medium text-amber-100 mb-2">Subscribe to our Newsletter</p>
+              <p className="text-xs font-medium text-amber-100 mb-2">{t.footerNewsletterTitle || "Subscribe to our Newsletter"}</p>
               <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row space-y-2 sm:space-y-0">
                 <input 
                   type="email" 
-                  placeholder="Your Email Address" 
+                  placeholder={t.footerEmailPlaceholder || "Your Email Address"} 
                   className="bg-white/90 text-amber-950 text-xs px-3 py-2.5 rounded-l-lg sm:rounded-r-none rounded-r-lg sm:rounded-l-lg outline-none w-full"
                 />
                 <button 
                   type="submit" 
                   className="bg-gradient-to-r from-amber-200 to-amber-400 hover:brightness-105 text-amber-950 font-semibold text-xs px-4 py-2.5 rounded-r-lg sm:rounded-l-none rounded-l-lg sm:rounded-r-lg transition-all shrink-0"
                 >
-                  Subscribe
+                  {t.footerSubscribeBtn || "Subscribe"}
                 </button>
               </form>
             </div>
@@ -150,23 +143,23 @@ const Footer = () => {
           
           {/* Copyright */}
           <div>
-            © 2026 Your Name. All Rights Reserved.
+            {t.footerCopyright || "© 2026 Your Name. All Rights Reserved."}
           </div>
 
           {/* Middle Meta / Faith */}
           <div className="flex items-center space-x-3 text-amber-300/80">
-            <span>Faith</span>
+            <span>{t.footerFaith || "Faith"}</span>
             <span>•</span>
-            <span>Knowledge</span>
+            <span>{t.footerKnowledge || "Knowledge"}</span>
             <span>•</span>
-            <span>Healing</span>
+            <span>{t.footerHealing || "Healing"}</span>
           </div>
 
           {/* Designed With Love */}
           <div className="flex items-center space-x-1">
-            <span>Designed with</span>
+            <span>{t.footerDesignedWith || "Designed with"}</span>
             <FaHeart className="text-red-500 text-[10px]" />
-            <span>for Humanity</span>
+            <span>{t.footerForHumanity || "for Humanity"}</span>
           </div>
 
         </div>

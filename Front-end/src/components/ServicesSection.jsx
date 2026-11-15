@@ -1,41 +1,46 @@
 import React from 'react';
 import { FaHandsHelping, FaShieldAlt, FaLeaf, FaUserShield, FaVideo, FaArrowRight } from 'react-icons/fa';
-import serviceImage from '../assets/services.png'
-
-const servicesData = [
-  {
-    id: 1,
-    title: 'Istikhara Consultation',
-    description: 'Get guidance for important decisions',
-    icon: <FaHandsHelping />,
-  },
-  {
-    id: 2,
-    title: 'Ruqyah Service',
-    description: 'Protection from negative energies',
-    icon: <FaShieldAlt />,
-  },
-  {
-    id: 3,
-    title: 'Spiritual Healing',
-    description: 'Find peace & recovery',
-    icon: <FaLeaf />,
-  },
-  {
-    id: 4,
-    title: 'Personalized Guidance',
-    description: 'One-to-one support',
-    icon: <FaUserShield />,
-  },
-  {
-    id: 5,
-    title: 'Online Consultation',
-    description: 'Get help from anywhere',
-    icon: <FaVideo />,
-  },
-];
+import serviceImage from '../assets/services.png';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext'; // Import global context
 
 const ServicesSection = () => {
+  const { t } = useLanguage(); // Get global translations
+
+  // Services data array connected to global translations
+  const servicesData = [
+    {
+      id: 1,
+      title: t.service1Title || 'Istikhara Consultation',
+      description: t.service1Desc || 'Get guidance for important decisions',
+      icon: <FaHandsHelping />,
+    },
+    {
+      id: 2,
+      title: t.service2Title || 'Ruqyah Service',
+      description: t.service2Desc || 'Protection from negative energies',
+      icon: <FaShieldAlt />,
+    },
+    {
+      id: 3,
+      title: t.service3Title || 'Spiritual Healing',
+      description: t.service3Desc || 'Find peace & recovery',
+      icon: <FaLeaf />,
+    },
+    {
+      id: 4,
+      title: t.service4Title || 'Personalized Guidance',
+      description: t.service4Desc || 'One-to-one support',
+      icon: <FaUserShield />,
+    },
+    {
+      id: 5,
+      title: t.service5Title || 'Online Consultation',
+      description: t.service5Desc || 'Get help from anywhere',
+      icon: <FaVideo />,
+    },
+  ];
+
   return (
     <section className="relative w-full bg-[#fcf8ed] py-16 px-4 sm:px-6 lg:px-12 font-sans overflow-hidden">
       
@@ -54,12 +59,12 @@ const ServicesSection = () => {
           <div className="flex items-center justify-center space-x-3 mb-2">
             <span className="w-12 h-[1px] bg-amber-700/50"></span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-amber-950 tracking-wide">
-              Our Services
+              {t.servicesHeading || "Our Services"}
             </h2>
             <span className="w-12 h-[1px] bg-amber-700/50"></span>
           </div>
           <p className="text-amber-900/70 text-sm sm:text-base font-light">
-            Professional and trusted services for your spiritual and personal well-being
+            {t.servicesSubheading || "Professional and trusted services for your spiritual and personal well-being"}
           </p>
         </div>
 
@@ -88,13 +93,13 @@ const ServicesSection = () => {
 
         {/* View All Services Button Center */}
         <div className="flex justify-center">
-          <a
-            href="#all-services"
+          <Link
+            to={"/services"}
             className="inline-flex items-center space-x-2 bg-[#09261b] hover:bg-[#061c13] text-white font-medium px-7 py-3 rounded-xl text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-lg"
           >
-            <span>View All Services</span>
+            <span>{t.servicesCta || "View All Services"}</span>
             <FaArrowRight className="text-xs" />
-          </a>
+          </Link>
         </div>
 
       </div>

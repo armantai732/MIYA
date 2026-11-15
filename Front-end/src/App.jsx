@@ -1,126 +1,47 @@
-
 import React, { useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext"; // Import Provider
 
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
-import SpiritualCoursesSection from "./components/SpiritualCoursesSection";
 import ServicesSection from "./components/ServicesSection";
-import HerbalProductsSection from "./components/HerbalProductsSection";
 import LatestArticlesSection from "./components/LatestArticlesSection";
-import TestimonialsSection from "./components/TestimonialsSection";
 import AppointmentBanner from "./components/AppointmentBanner";
 import Footer from "./components/Footer";
-
 import AboutHeroBanner from "./components/AboutHeroBanner";
 import OurStorySection from "./components/OurStorySection";
 import OurValuesSection from "./components/OurValuesSection";
 import OurJourneySection from "./components/OurJourneySection";
 import SpiritualGuideSection from "./components/SpiritualGuideSection";
 
-import SpiritualKnowledgeHero from "./components/SpiritualKnowledgeHero";
-import KnowledgeCategoriesSection from "./components/KnowledgeCategoriesSection";
-import FeaturedKnowledgeSection from "./components/FeaturedKnowledgeSection";
-import LatestArticlesInsights from "./components/LatestArticlesInsights";
+// (Keep all your other page components imported as they were...)
 
-import LearnReflectGrowBanner from "./components/LearnReflectGrowBanner";
-import SpiritualCourses from "./components/SpiritualCourses";
-import FeaturedCourseBanner from "./components/FeaturedCourseBanner";
-import WhyChooseCoursesSection from "./components/WhyChooseCoursesSection";
-import EnrollStepsSection from "./components/EnrollStepsSection";
-import FAQSection from "./components/FAQSection";
-
-import HerbalProductsHero from "./components/HerbalProductsHero.jsx";
-import HerbalProductsListingPage from "./components/HerbalProductsListingPage.jsx";
-import HerbalTrustBanner from "./components/HerbalTrustBanner.jsx";
-import WhyChooseHerbalWithFAQ from "./components/WhyChooseHerbalWithFAQ.jsx";
-import SpiritualServicesHero from "./components/SpiritualServicesHero.jsx";
-import SpiritualServicesGrid from "./components/SpiritualServicesGrid.jsx";
-import HowItWorksAndFAQ from "./components/HowItWorksAndFAQ.jsx";
-import BookAppointmentBanner from "./components/BookAppointmentBanner.jsx";
-import AppointmentBookingSection from "./components/AppointmentBookingSection.jsx";
-import SimpleAppointmentSteps from "./components/SimpleAppointmentSteps.jsx";
-import AppointmentFAQSection from "./components/AppointmentFAQSection.jsx";
-import DonateHeroBanner from "./components/DonateHeroBanner.jsx";
-import DonatePurposeSection from "./components/DonatePurposeSection.jsx";
-import DonationFormSection from "./components/DonationFormSection.jsx";
-import DonateImpactSection from "./components/DonateImpactSection.jsx";
-import DonateGratitudeBanner from "./components/DonateGratitudeBanner.jsx";
-import DonateFAQSection from "./components/DonateFAQSection.jsx";
-import ContactHeroBanner from "./components/ContactHeroBanner.jsx";
-import ContactFormSection from "./components/ContactFormSection.jsx";
-import ContactFAQSection from "./components/ContactFAQSection.jsx";
-import AppointmentPaymentHeaderBanner from "./components/AppointmentPaymentHeaderBanner.jsx";
-
-// SCROLL TO TOP / HASH SECTION
 const ScrollToSection = () => {
   const location = useLocation();
-
   useEffect(() => {
     if (location.hash) {
       const sectionId = location.hash.replace("#", "");
-
       setTimeout(() => {
         const element = document.getElementById(sectionId);
-
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
     } else {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location]);
-
   return null;
 };
 
-// HOME PAGE
-const Home = () => {
-  return (
-    <main>
-      <HeroSection />
-
-      <div id="about" className="scroll-mt-24">
-        <AboutSection />
-      </div>
-
-      {/* <div id="courses" className="scroll-mt-24">
-        <SpiritualCoursesSection />
-      </div> */}
-
-      <div id="services" className="scroll-mt-24">
-        <ServicesSection />
-      </div>
-
-      {/* <div id="products" className="scroll-mt-24">
-        <HerbalProductsSection />
-      </div> */}
-
-      <div id="blogs" className="scroll-mt-24">
-        <LatestArticlesSection />
-      </div>
-
-      {/* <TestimonialsSection /> */}
-
-      <div id="appointment" className="scroll-mt-24">
-        <AppointmentBanner />
-      </div>
-    </main>
-  );
-};
+const Home = () => (
+  <main>
+    <HeroSection />
+    <div id="about" className="scroll-mt-24"><AboutSection /></div>
+    <div id="services" className="scroll-mt-24"><ServicesSection /></div>
+    <div id="blogs" className="scroll-mt-24"><LatestArticlesSection /></div>
+    <div id="appointment" className="scroll-mt-24"><AppointmentBanner /></div>
+  </main>
+);
 
 // ABOUT PAGE
 const About = () => {
@@ -232,28 +153,27 @@ const Payment = () => {
 // MAIN APP
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToSection />
-
-      <Header />
-
-      <div className="min-h-screen bg-[#fcf8ed]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/knowledge" element={<Knowledge />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/payment" element={<Payment />} />
-        </Routes>
-      </div>
-
-      <Footer />
-    </BrowserRouter>
+    <LanguageProvider> {/* Wrap everything here */}
+      <BrowserRouter>
+        <ScrollToSection />
+        <Header />
+        <div className="min-h-screen bg-[#fcf8ed]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/knowledge" element={<Knowledge />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/appointment" element={<Appointment />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/payment" element={<Payment />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 
